@@ -13,3 +13,6 @@ After setup, normal interaction is available through a built in web interface ac
 ## One line Install
 
 `wget -O - https://raw.githubusercontent.com/shermand100/pinode-doge/main/Install-PiNode-DOGE.sh | bash`
+
+#### Development Donation
+DJbZLqmCEZejQBoTfg6faYrXPQ9BhLNEjd
