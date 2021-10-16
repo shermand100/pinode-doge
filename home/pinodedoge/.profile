@@ -25,4 +25,5 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-. /home/pinodedoge/installPart2.sh
+export PATH=$PATH:/home/pinodedoge/
+. /home/pinodedoge/setup.sh

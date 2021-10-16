@@ -30,7 +30,7 @@ sudo apt update 2> >(tee -a debug.log >&2) && sudo apt upgrade -y 2> >(tee -a de
 	echo "Installing dependencies for --- Web Interface" >>debug.log
 echo -e "\e[32mInstalling dependencies for --- Web Interface\e[0m"
 sleep 3
-sudo apt install apache2 shellinabox php7.3 php7.3-cli php7.3-common php7.3-curl php7.3-gd php7.3-json php7.3-mbstring php7.3-mysql php7.3-xml -y 2> >(tee -a debug.log >&2)
+sudo apt install git apache2 shellinabox php7.3 php7.3-cli php7.3-common php7.3-curl php7.3-gd php7.3-json php7.3-mbstring php7.3-mysql php7.3-xml -y 2> >(tee -a debug.log >&2)
 sleep 3
 
 
@@ -158,8 +158,8 @@ sudo chmod 777 -R /var/www/html/ 2> >(tee -a debug.log >&2)
 		echo "Install crontab" >>debug.log
 echo -e "\e[32mSetup crontab\e[0m"
 sleep 3
-sudo crontab /home/pinodexmr/PiNode-XMR/var/spool/cron/crontabs/root 2> >(tee -a debug.log >&2)
-crontab /home/pinodexmr/PiNode-XMR/var/spool/cron/crontabs/pinodexmr 2> >(tee -a debug.log >&2)
+sudo crontab /home/pinodedoge/pinode-doge/var/spool/cron/crontabs/root 2> >(tee -a debug.log >&2)
+crontab /home/pinodedoge/pinode-doge/var/spool/cron/crontabs/pinodedoge 2> >(tee -a debug.log >&2)
 echo -e "\e[32mSuccess\e[0m"
 sleep 3
 
@@ -172,11 +172,11 @@ sudo sysctl vm.swappiness=10 2> >(tee -a debug.log >&2)
 	echo "Remove left over files from git clone actions" >>debug.log
 echo -e "\e[32mCleanup leftover directories\e[0m"
 sleep 3
-sudo rm -r /home/pinodexmr/PiNode-XMR/ 2> >(tee -a debug.log >&2)
+sudo rm -r /home/pinodedoge/pinode-doge/ 2> >(tee -a debug.log >&2)
 
 ##Change log in menu to 'main'
 #Delete line 28 (previous setting)
-wget -O ~/.profile https://raw.githubusercontent.com/monero-ecosystem/PiNode-XMR/Raspbian-install/home/pinodexmr/.profile 2> >(tee -a debug.log >&2)
+wget -O ~/.profile https://raw.githubusercontent.com/shermand100/pinode-doge/Raspberry-Pi-OS/home/pinodedoge/.profile 2> >(tee -a debug.log >&2)
 
 ##End debug log
 echo "
