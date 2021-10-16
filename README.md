@@ -1,4 +1,4 @@
-![PiNode-DOGE logo](https://raw.githubusercontent.com/shermand100/pinode-doge/main/Images\pinode-doge-banner.png)
+![PiNode-DOGE logo](https://github.com/shermand100/pinode-doge/blob/main/Images/pinode-doge-banner.png)
 # Quick Start Guide v0.10.21		
 ### This page will give a quick overview to get you started. A complete and comprehensive manual will be added to the Wiki later
 
