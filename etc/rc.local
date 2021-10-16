@@ -11,6 +11,6 @@
 #
 # By default this script does nothing.
 
-su pinodexmr -c '/home/pinodexmr/boot.sh &'
+su pinodedoge -c '/home/pinodedoge/boot.sh &'
 
 exit 0
