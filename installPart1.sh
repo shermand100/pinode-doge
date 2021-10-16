@@ -27,8 +27,8 @@ sleep 3
 ##Download part2 installer script and put in home directory to continue
 wget https://raw.githubusercontent.com/shermand100/pinode-doge/Raspberry-Pi-OS/installPart2.sh
 sudo mv /home/pi/installPart2.sh /home/pinodedoge/
-sudo chown pinodedoge /home/pinodexmr/installPart2.sh
-sudo chmod 755 /home/pinodexmr/installPart2.sh
+sudo chown pinodedoge /home/pinodedoge/installPart2.sh
+sudo chmod 755 /home/pinodedoge/installPart2.sh
 
 ##Change system hostname to PiNodeDOGE
 echo -e "\e[32mChanging system hostname to 'PiNodeDOGE'\e[0m"
@@ -39,10 +39,10 @@ echo '127.0.0.1       PiNodeDOGE' | sudo tee -a /etc/hosts
 sudo hostname PiNodeDOGE
 
 ##make script run when user logs in
-echo '. /home/pinodexmr/installPart2.sh' | sudo tee -a /home/pinodedoge/.profile
+echo '. /home/pinodedoge/installPart2.sh' | sudo tee -a /home/pinodedoge/.profile
 whiptail --title "PiNode-DOGE Continue Install" --msgbox "I've installed everything I can as user 'pi'\n\nSystem will reboot, then login as 'pinodedoge' to continue using password 'PiNodeDOGE'\n\nSelect ok to continue with reboot" 16 60
 echo -e "\e[32m****************************************\e[0m"
-echo -e "\e[32m**********PiNode-XMR rebooting**********\e[0m"
+echo -e "\e[32m**********PiNode-DOGE rebooting**********\e[0m"
 echo -e "\e[32m**********Reminder:*********************\e[0m"
 echo -e "\e[32m**********User: 'pinodedoge'*************\e[0m"
 echo -e "\e[32m**********Password: 'PiNodeDOGE'*********\e[0m"
@@ -51,4 +51,4 @@ sleep 5
 #reboot for hostname changes. Continue as pinodedoge
 sudo reboot
 
-#End of script as user 'pi'. Continues in directory /home/pinodexmr
+#End of script as user 'pi'. Continues in directory /home/pinodedoge
