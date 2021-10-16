@@ -2,22 +2,22 @@
 #IP tables rule for Tor
 sudo iptables -I OUTPUT -p tcp -d 127.0.0.1 -m tcp --dport 18081 -j ACCEPT
 #Load boot status - what condition was node last run
-. /home/pinodexmr/bootstatus.sh
+. /home/pinodedoge/bootstatus.sh
 
 #Establish IP
 	DEVICE_IP="$(hostname -I | awk '{print $1}')"
 
 #Load Variables
-. /home/pinodexmr/current-ver.sh
-. /home/pinodexmr/monero-port.sh
-. /home/pinodexmr/explorer-flag.sh
+. /home/pinodedoge/current-ver.sh
+. /home/pinodedoge/monero-port.sh
+. /home/pinodedoge/explorer-flag.sh
 
 echo $CURRENT_VERSION 'Current Version'
 echo $DEVICE_IP 'Device IP'
 echo $MONERO_PORT 'Monero Port'
 sleep 3
-		sudo chown -R pinodexmr /home/pinodexmr/.bitmonero
-		sudo chmod 777 -R /home/pinodexmr/.bitmonero
+		sudo chown -R pinodedoge /home/pinodedoge/.bitmonero
+		sudo chmod 777 -R /home/pinodedoge/.bitmonero
 
 if [ $BOOT_STATUS -eq 2 ]
 then
