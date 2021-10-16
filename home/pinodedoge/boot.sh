@@ -13,7 +13,4 @@ BOOT_STATUS=2" > /home/pinodedoge/bootstatus.sh
 	
 else
 . /home/pinodedoge/df-h.sh
-. /home/pinodedoge/init.sh	
 fi
-
-
