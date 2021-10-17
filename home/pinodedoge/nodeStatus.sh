@@ -23,7 +23,7 @@ fi
 	if [ $BOOT_STATUS -eq 3 ]
 then	
 		#Node Status
-		NODE_STATUS="$(dogecoin/bin/dogecoin-cli getblockchaininfo | jq -Mr {"Network:.chain, Current_Block_height:.blocks, Sync_Progress_percent:((.verificationprogress)*100), Initial_block_download:.initialblockdownload, Approx_Size_on_Disk_GB:((.size_on_disk)/1000000000)"} | tr -d '{}"')" && echo "$NODE_STATUS"> /var/www/html/Node_Status.txt
+		NODE_STATUS="$(dogecoin/bin/dogecoin-cli getblockchaininfo | jq -Mr {"Network:.chain, Current_Block_height:.blocks, Sync_Progress_percent:((.verificationprogress)*10000|floor/100.0), Initial_block_download:.initialblockdownload, Approx_Size_on_Disk_GB:((.size_on_disk)/10000000|floor/100.0)"} | tr -d '{}"')" && echo "$NODE_STATUS"> /var/www/html/Node_Status.txt
 		#Time stamps added temporarily to better identify most recent stats, (not frozen/old data from browser cache).
 				date >> /var/www/html/Node_Status.txt
 fi

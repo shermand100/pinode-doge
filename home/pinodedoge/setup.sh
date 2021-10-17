@@ -64,7 +64,7 @@
 				
 				case $CHOICE3 in
 		
-					"1)")	if (whiptail --title "PiNode-DOGE Update Dogecoin" --yesno "This will run a check to see if a Dogecoin update is available\n\nIf an update is found PiNode-DOGE will perform the update.\n\n***This will take several hours***\n\nWould you like to continue?" 12 78); then
+					"1)")	if (whiptail --title "PiNode-DOGE Update Dogecoin" --yesno "This will run a check to see if a Dogecoin update is available\n\nIf an update is found PiNode-DOGE will perform the update.\n\nWould you like to continue?" 12 78); then
 							. /home/pinodedoge/setup-update-dogecoin.sh
 							else
 							. /home/pinodedoge/setup.sh
