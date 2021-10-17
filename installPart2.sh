@@ -148,10 +148,16 @@ sudo mv /home/pinodedoge/pinode-doge/HTML/images /var/www/html 2> >(tee -a debug
 sudo chown www-data -R /var/www/html/ 2> >(tee -a debug.log >&2)
 sudo chmod 777 -R /var/www/html/ 2> >(tee -a debug.log >&2)
 
-##Build Monero and Onion Blockchain Explorer (the simple but time comsuming bit)
-	echo "Build Monero" >>debug.log
-#First build monero, single build directory
-
+##Get DOGECOIN
+	echo "Download Dogecoin ARM package" >>debug.log
+#Download
+wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.4/dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
+#Unpack
+tar -zxvf dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
+#For consistancy between versions, rename directory
+mv ~/dogecoin-1.14.4 ~/dogecoin
+#Delete obsolete package
+rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
 
 
 ##Install crontab
@@ -173,6 +179,8 @@ sudo sysctl vm.swappiness=10 2> >(tee -a debug.log >&2)
 echo -e "\e[32mCleanup leftover directories\e[0m"
 sleep 3
 sudo rm -r /home/pinodedoge/pinode-doge/ 2> >(tee -a debug.log >&2)
+#Delete obsolete dogecoin package
+rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
 
 ##Change log in menu to 'main'
 #Delete line 28 (previous setting)

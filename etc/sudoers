@@ -18,7 +18,7 @@ Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
 # specification User privilege specification
 root	ALL=(ALL:ALL) ALL
 pinodedoge ALL=NOPASSWD: ALL
-www-data ALL=(ALL) NOPASSWD: /bin/systemctl start monerod-start.service, /bin/systemctl stop monerod-start.service, /bin/systemctl start monerod-reboot.service, /bin/systemctl start monerod-update.service, /sbin/shutdown now, /bin/systemctl start shutdown.service, /bin/systemctl start kill.service, /home/pinodexmr/enable-swap.sh, /home/pinodexmr/disable-swap.sh
+www-data ALL=(ALL) NOPASSWD: /bin/systemctl start dogecoind-start.service, /bin/systemctl stop dogecoind-start.service, /bin/systemctl enable dogecoind-start.service, /bin/systemctl disable dogecoind-start.service, /sbin/shutdown now, /bin/systemctl start shutdown.service, /bin/systemctl start kill.service, /home/pinodexmr/enable-swap.sh, /home/pinodexmr/disable-swap.sh, /home/pinodedoge/remove-autostart.sh
 
 # See sudoers(5) for more information on "#include" directives: 
 

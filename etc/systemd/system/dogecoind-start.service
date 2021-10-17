@@ -1,15 +1,16 @@
 [Unit]
-Description=nodeStatusGeneration
+Description=Dogecoin Node
 After=network.target
 
 [Service]
-ExecStart=/bin/bash nodeStatus.sh
+ExecStart=/bin/bash nodeStart.sh
 WorkingDirectory=/home/pinodedoge/
-PIDFile=/tmp/statusGeneration.pid
-Type=simple
+Type=forking
 Restart=always
 RestartSec=30
 User=pinodedoge
+StandardOutput=inherit
+StandardError=inherit
 
 [Install]
 WantedBy=multi-user.target

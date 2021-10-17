@@ -1,16 +1,16 @@
 [Unit]
-Description=White Node Data Pull
+Description=Stop Dogecoin Node
 After=network.target
 
 [Service]
-ExecStart=/bin/bash Connected-white-Node-IPs.sh
-WorkingDirectory=/home/pinodexmr/NodeGeoIP/
+ExecStart=/bin/bash nodeRestart.sh
+WorkingDirectory=/home/pinodedoge/
 StandardOutput=inherit
 StandardError=inherit
 Type=oneshot
 RemainAfterExit=true
 Restart=no
-User=pinodexmr
+User=pinodedoge
 
 [Install]
 WantedBy=multi-user.target

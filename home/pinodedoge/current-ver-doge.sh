@@ -1,0 +1,2 @@
+#!/bin/bash
+CURRENT_VERSION=11440
