@@ -3,7 +3,7 @@ Description=Stop Dogecoin Node
 After=network.target
 
 [Service]
-ExecStart=/bin/bash nodeRestart.sh
+ExecStart=/bin/bash nodeReboot.sh
 WorkingDirectory=/home/pinodedoge/
 StandardOutput=inherit
 StandardError=inherit
