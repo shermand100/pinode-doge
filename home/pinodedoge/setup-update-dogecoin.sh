@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#Establish IP
 echo "PiNode-DOGE is checking for available updates"
 sleep "1"
 #Download update file
@@ -31,14 +30,7 @@ sleep "3"
 ##Get DOGECOIN
 	echo "Download Dogecoin ARM package" >>debug.log
 	echo -e "\e[32mDownload Dogecoin ARM package...\e[0m"
-#Download
-wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.4/dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
-#Unpack
-tar -zxvf dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
-#For consistancy between versions, rename directory
-mv ~/dogecoin-1.14.4 ~/dogecoin
-#Delete obsolete package
-rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
+	wget -O - https://raw.githubusercontent.com/shermand100/pinode-doge/main/downloadLatestDoegcoin.sh | bash
 		
 		sleep 2
 		if [ $BOOT_STATUS -eq 2 ]
@@ -71,14 +63,7 @@ else
 ##Get DOGECOIN
 	echo "Download Dogecoin ARM package" >>debug.log
 	echo -e "\e[32mDownload Dogecoin ARM package...\e[0m"
-#Download
-wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.4/dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
-#Unpack
-tar -zxvf dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
-#For consistancy between versions, rename directory
-mv ~/dogecoin-1.14.4 ~/dogecoin
-#Delete obsolete package
-rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
+	wget -O - https://raw.githubusercontent.com/shermand100/pinode-doge/main/downloadLatestDoegcoin.sh | bash
 		
 		if [ $BOOT_STATUS -eq 2 ]
 then
