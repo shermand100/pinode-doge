@@ -160,6 +160,22 @@
       </div>
   </div>
 
+  <hr>
+  <div class="container py-4">
+  <div class="row my-4">
+    <div class="col-md-12">
+    <h5 class="font-weight-bold">Port Forwarding: <small>Wow, much helping the network...</small></h5>
+
+    <p class="text-center small">PiNode-DOGE uses default Dogecoin settings. In this way you will stay sync'd with the blockchain and relay transactions whilst enforcing the rules of the network.</p>
+    <p class="text-center small">If you would like to help the network further you can allow other node users to sync their nodes blockchain from you. The more people that do this the stronger the network becomes.</p>
+    <p class="text-center small">!If you choose to do this by forwarding port 22556 you must first ensure you have set a new Master password in the Web Terminal settings menu!</p>
+    <p class="text-center small">Port forwarding is configured in your router settings and so will be different for each user.</p>
+
+      </div> <!-- col -->
+    </div> <!-- /row -->
+  </div> <!-- /container -->
+  <hr>
+
   <div class="container py-4">
     <div class="row my-4">
       <div class="col-md-12">
@@ -242,12 +258,6 @@
     </div>
   </div> <!-- container -->
 
-
-
-
-
-
-
   </div>
   <div class="container py-4">
     <div class="row">
@@ -259,7 +269,7 @@
         <script>
           function shutdownbutton() {
             $.ajax({
-              url: "monerod-shutdown.php", //the page containing php script
+              url: "systemShutdown.php", //the page containing php script
               type: "POST", //request type
               success: function (result) {
                 alert(result);
@@ -279,7 +289,7 @@
         <script>
           function killbutton() {
             $.ajax({
-              url: "monerod-kill.php", //the page containing php script
+              url: "dogecoindKill.php", //the page containing php script
               type: "POST", //request type
               success: function (result) {
                 alert(result);
