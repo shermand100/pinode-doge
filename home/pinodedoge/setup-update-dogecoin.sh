@@ -19,11 +19,11 @@ echo $CURRENT_VERSION 'Current Version'
 sleep "3"
 	if [ $CURRENT_VERSION -lt $NEW_VERSION ]
 		then
-		echo -e "\e[32mNew Dogecoin version available...Proceeding with download\e[0m"
+		echo -e "\e[32mSystem will now install the latest available of Dogecoin. \e[0m"
 		sleep "2"
+		echo "Dogecoind stop command sent, allowing up to 2 minutes for safe shutdown"		
 		sudo systemctl stop dogecoind-start.service
-		echo "Dogecoind stop command sent, allowing 15 seconds for safe shutdown"
-		sleep "15"
+		sleep "5"
 		echo "Deleting Old Version"
 		rm -rf /home/pinodedoge/dogecoin
 		sleep "2"
@@ -52,11 +52,11 @@ else
 				
 		if (whiptail --title "PiNode-DOGE Dogecoin Update" --yesno "This device thinks it's running the latest version of Dogecoin (that has been tested with PiNode-DOGE).\n\nIf you think this is incorrect or require a clean Dogecoin install you may force an update below." --yes-button "Force Dogecoin Update" --no-button "Return to Main Menu"  14 78); then
 
-		echo -e "\e[32mSystem will now install the latest available of Dogecoin.\e[0m"
+		echo -e "\e[32mSystem will now install the latest available of Dogecoin. \e[0m"
 		sleep "2"
+		echo "Dogecoind stop command sent, allowing up to 2 minutes for safe shutdown"		
 		sudo systemctl stop dogecoind-start.service
-		echo "Dogecoind stop command sent, allowing 15 seconds for safe shutdown"
-		sleep "15"
+		sleep "5"
 		echo "Deleting Old Version"
 		rm -rf /home/pinodedoge/dogecoin
 		sleep "2"
