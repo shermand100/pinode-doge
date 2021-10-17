@@ -1,3 +1,3 @@
 #!/bin/bash
-#Force Process Stop - monerod
-sudo killall -9 monerod
+#Force Process Stop - dogecoind
+sudo killall -9 dogecoind

@@ -18,7 +18,7 @@
   <!-- Custom Style Sheet -->
   <link rel="stylesheet" type="text/css" href="/app.css">
   <!-- Title  -->
-  <title>PiNode-XMR - Node Control</title>
+  <title>PiNode-DOGE - Node Control</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -28,7 +28,7 @@
 <body>
 
   <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="index.html"><i class="fab fa-d"></i> PiNode-XMR</a>
+    <a class="navbar-brand" href="index.html"> PiNode-DOGE<i class="fas fa-rocket"></i><i class="far fa-moon"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -45,19 +45,6 @@
           <a class="nav-link" href="/"
             onclick="javascript:event.target.port=4200;event.target.protocol='https:';"" ><i class=" fas
             fa-terminal"></i> Web Terminal</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/"
-            onclick="javascript:event.target.port=8081;event.target.protocol='http:';"" ><i class=" fas
-            fa-search-dollar"></i> Block Explorer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/"
-            onclick="javascript:event.target.port=7657;event.target.protocol='http:';"" ><i class=" fas
-            fa-network-wired"></i> I2P Interface </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="GeoIP.html"><i class="fas fa-globe-americas"></i> IP2GEO</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="log.html"><i class="fas fa-file-alt"></i> Log</a>
@@ -185,174 +172,6 @@
   <div class="container">
     <div class="accordion" id="accordionExample3">
       <div class="card border-1">
-        <div class="card-header" id="headingSeven">
-          <h5 class="mb-0">
-            <button class="btn btn-link badge badge-light" type="button" data-toggle="collapse"
-              data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
-              <i class="fas fa-arrows-alt-v"></i> Network: <small>Global Settings</small>
-            </button>
-          </h5>
-        </div>
-
-        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample3">
-          <div class="card-body">
-            <div class="container py-4">
-
-              <h3 class="demo-panel-title pt-3">Bandwidth:</h3>
-
-              <div class="demo-type-example">
-                <h6 class="demo-panel-title pt-3">Optimization:</h6>
-                <p>By default the node can be bandwidth intensive in both upload and download. Limits on this node can
-                  be imposed below. <br>[Note: value -1 restores parameter to default]</p>
-              </div>
-
-              <div class="row">
-                <div class="col">
-                  <h3 class="demo-panel-title">Upload <small> Mbps</small><span class="fui-triangle-up"></span></h3>
-                  <div class="btn-group">
-                    <form method="post">
-                      <select name='Speed Up' class="btn btn-dark dropdown-toggle"
-                        onchange='if(this.value != 0) { speedup(this.value); }'>
-                        <option value='0'>Upload Speed</option>
-                        <option value='256'>.25 Mbps</option>
-                        <option value='512'>.5 Mbps</option>
-                        <option value='1024'>1 Mbps</option>
-                        <option value='1536'>1.5 Mbps</option>
-                        <option value='-1'>2 Mbps [DEFAULT]</option>
-                        <option value='2560'>2.5 Mbps</option>
-                        <option value='3072'>3 Mbps</option>
-                        <option value='3548'>3.5 Mbps</option>
-                        <option value='4096'>4 Mbps</option>
-                        <option value='4608'>4.5 Mbps</option>
-                        <option value='5120'>5 Mbps</option>
-                        <option value='10240'>10 Mbps</option>
-                      </select>
-                    </form>
-                    <script type="text/javascript">
-                      function speedup(value) {
-                        $.ajax({
-                          url: "speed_up.php", //the page containing php script
-                          type: "POST", //request type
-                          data: ({ value }),
-                          success: function (result) {
-                            alert(result);
-                          }
-                        });
-                      }
-                    </script>
-
-                  </div><!-- /btn-group -->
-                </div> <!-- /.col -->
-
-                <div class="col">
-                  <h3 class="demo-panel-title">Download <small> Mbps</small><span
-                      class="fui-triangle-down-small"></span></h3>
-                  <div class="btn-group">
-                    <form method="post">
-                      <select name='Speed Down' class="btn btn-dark dropdown-toggle"
-                        onchange='if(this.value != 0) { speeddown(this.value); }'>
-                        <option value='0'>Download Speed</option>
-                        <option value='1024'>1 Mbps</option>
-                        <option value='2048'>2 Mbps</option>
-                        <option value='3072'>3 Mbps</option>
-                        <option value='4096'>4 Mbps</option>
-                        <option value='6144'>6 Mbps</option>
-                        <option value='-1'>8 Mbps [DEFAULT]</option>
-                        <option value='10240'>10 Mbps</option>
-                        <option value='12228'>12 Mbps</option>
-                        <option value='15360'>15 Mbps</option>
-                        <option value='18432'>18 Mbps</option>
-                        <option value='22528'>22 Mbps</option>
-                        <option value='30720'>30 Mbps</option>
-                      </select>
-                    </form>
-                    <script type="text/javascript">
-                      function speeddown(value) {
-                        $.ajax({
-                          url: "speed_down.php", //the page containing php script
-                          type: "POST", //request type
-                          data: ({ value }),
-                          success: function (result) {
-                            alert(result);
-                          }
-                        });
-                      }
-                    </script>
-                  </div><!-- /btn-group -->
-                </div> <!-- /.col -->
-                <div class="col">
-                  <h3 class="demo-panel-title">Out Peers<span class="fui-triangle-right-large"></span></h3>
-
-                  <div class="btn-group">
-                    <form method="post">
-                      <select name='Out Peers' class="btn btn-dark dropdown-toggle"
-                        onchange='if(this.value != 0) { outpeers(this.value); }'>
-                        <option value='0'>Out Peers</option>
-                        <option value='2'>2</option>
-                        <option value='4'>4</option>
-                        <option value='6'>6</option>
-                        <option value='-1'>8 [DEFAULT]</option>
-                        <option value='10'>10</option>
-                        <option value='12'>12</option>
-                        <option value='14'>14</option>
-                        <option value='16'>16</option>
-                        <option value='24'>24</option>
-                        <option value='32'>32</option>
-                      </select>
-                    </form>
-                    <script type="text/javascript">
-                      function outpeers(value) {
-                        $.ajax({
-                          url: "out-peers.php", //the page containing php script
-                          type: "POST", //request type
-                          data: ({ value }),
-                          success: function (result) {
-                            alert(result);
-                          }
-                        });
-                      }
-                    </script>
-                  </div><!-- /btn-group -->
-                </div> <!-- /.col -->
-                <div class="col">
-                  <h3 class="demo-panel-title">In Peers<span class="fui-triangle-left-large"></span></h3>
-
-                  <div class="btn-group">
-                    <form method="post">
-                      <select name='In Peers' class="btn btn-dark dropdown-toggle"
-                        onchange='if(this.value != 0) { inpeers(this.value); }'>
-                        <option value='0'>In Peers</option>
-                        <option value='-1'>DEFAULT [UNLIMITED]</option>
-                        <option value='2'>2</option>
-                        <option value='4'>4</option>
-                        <option value='6'>6</option>
-                        <option value='8'>8</option>
-                        <option value='10'>10</option>
-                        <option value='12'>12</option>
-                        <option value='14'>14</option>
-                        <option value='16'>16</option>
-                      </select>
-                    </form>
-                    <script type="text/javascript">
-                      function inpeers(value) {
-                        $.ajax({
-                          url: "in-peers.php", //the page containing php script
-                          type: "POST", //request type
-                          data: ({ value }),
-                          success: function (result) {
-                            alert(result);
-                          }
-                        });
-                      }
-                    </script>
-                  </div><!-- /btn-group -->
-                </div> <!-- /.col -->
-              </div> <!-- /container -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card border-1">
         <div class="card-header" id="headingEight">
           <h5 class="mb-0">
             <button class="btn btn-link badge badge-light" type="button" data-toggle="collapse"
@@ -371,8 +190,7 @@
               <div class="row">
                 <div class="demo-type-example">
                   <span class="demo-text-note"></span>
-                  <p>*If your device has less than 2GB RAM this swap file should be used for large blockchain syncs
-                    and Monero updates. It can artificially augment system performance. Then to preserve SD card
+                  <p>*If your device has less than 2GB RAM this swap file should be used for iniyial blockchain sync. It can artificially augment system performance. Then to preserve SD card
                     read/write life this should be disabled when not required.</p>
                 </div>
               </div> <!-- row -->
@@ -434,9 +252,9 @@
   <div class="container py-4">
     <div class="row">
       <div class="col-md-6">
-        <h3 class="demo-panel-title"> Power Off: <small>Safe shutdown of PiNode-XMR </small></h3>
+        <h3 class="demo-panel-title"> Power Off: <small>Safe shutdown of PiNode-DOGE </small></h3>
         <a onclick="shutdownbutton()" href="#Shutdown" class="btn btn-block btn-lg btn-warning">Shutdown
-          PiNode-XMR<span class="fui-power"></span></a>
+          PiNode-DOGE<span class="fui-power"></span></a>
 
         <script>
           function shutdownbutton() {
@@ -453,9 +271,9 @@
       </div>
 
       <div class="col-md-6">
-        <h3 class="demo-panel-title"> Kill Switch: <small>unsafe shutdown of PiNode-XMR </small></h3>
+        <h3 class="demo-panel-title"> Kill Switch: <small>unsafe shutdown of PiNode-DOGE </small></h3>
 
-        <a onclick="killbutton()" href="#Shutdown" class="btn btn-block btn-lg btn-danger">Kill Process - monerod<span
+        <a onclick="killbutton()" href="#Shutdown" class="btn btn-block btn-lg btn-danger">Kill Process - dogecoind<span
             class="fui-trash"></span></a>
 
         <script>
@@ -470,8 +288,8 @@
           }
         </script>
 
-        <p class="text-center">If you suspect monerod is stuck and cannot recover itself or be recovered this button
-          will send command 'sudo killall -9 monerod'. <br>Corruption of stored blockchain could occur, not to be used
+        <p class="text-center">If you suspect dogecoind is stuck and cannot recover itself or be recovered this button
+          will send command 'sudo killall -9 dogecoind'. <br>Corruption of stored blockchain could occur, not to be used
           lightly.</p>
       </div> <!-- col -->
     </div> <!-- row -->

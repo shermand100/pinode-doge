@@ -34,7 +34,7 @@ sudo apt install git apache2 shellinabox php7.3 php7.3-cli php7.3-common php7.3-
 sleep 3
 
 
-##Installing dependencies for --- miscellaneous (tor+tor monitor-nyx, security tools-fail2ban-ufw, menu tool-dialog, screen, mariadb)
+##Installing dependencies for --- miscellaneous (security tools-fail2ban-ufw, menu tool-dialog, screen, mariadb)
 	echo "Installing dependencies for --- miscellaneous" >>debug.log
 echo -e "\e[32mInstalling dependencies for --- Miscellaneous\e[0m"
 sleep 3
@@ -112,7 +112,6 @@ sleep 3
 	echo "Add PiNode-DOGE php settings" >>debug.log
 echo -e "\e[32mAdd PiNode-DOGE php settings\e[0m"
 sleep 3
-sudo mv /home/pinodedoge/pinode-doge/etc/php/7.3/apache2/php.ini /etc/php/7.3/apache2/ 2> >(tee -a debug.log >&2)
 #Configure apache server for access to dogecoind log file
 sudo mv /home/pinodedoge/pinode-doge/etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf 2> >(tee -a debug.log >&2)
 sudo chmod 777 /etc/apache2/sites-enabled/000-default.conf 2> >(tee -a debug.log >&2)
@@ -164,7 +163,6 @@ rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
 		echo "Install crontab" >>debug.log
 echo -e "\e[32mSetup crontab\e[0m"
 sleep 3
-sudo crontab /home/pinodedoge/pinode-doge/var/spool/cron/crontabs/root 2> >(tee -a debug.log >&2)
 crontab /home/pinodedoge/pinode-doge/var/spool/cron/crontabs/pinodedoge 2> >(tee -a debug.log >&2)
 echo -e "\e[32mSuccess\e[0m"
 sleep 3

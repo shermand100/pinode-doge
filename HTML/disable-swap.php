@@ -1,4 +1,4 @@
 <?php 
-  exec("sudo /home/pinodexmr/disable-swap.sh");
+  exec("sudo /home/pinodedoge/disable-swap.sh");
   echo "2GB swap-file disabled";
  ?>
