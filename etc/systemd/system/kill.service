@@ -1,16 +1,16 @@
 [Unit]
-Description=Kill monerod processes
+Description=Kill dogecoind processes
 After=network.target
 
 [Service]
 ExecStart=/bin/bash kill.sh
-WorkingDirectory=/home/pinodexmr/
+WorkingDirectory=/home/pinodedoge/
 StandardOutput=inherit
 StandardError=inherit
 Type=oneshot
 RemainAfterExit=true
 Restart=no
-User=pinodexmr
+User=pinodedoge
 
 [Install]
 WantedBy=multi-user.target
