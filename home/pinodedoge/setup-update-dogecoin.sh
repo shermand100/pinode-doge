@@ -30,7 +30,7 @@ sleep "3"
 ##Get DOGECOIN
 	echo "Download Dogecoin ARM package" >>debug.log
 	echo -e "\e[32mDownload Dogecoin ARM package...\e[0m"
-	wget -O - https://raw.githubusercontent.com/shermand100/pinode-doge/main/downloadLatestDoegcoin.sh | bash
+	wget -O - https://raw.githubusercontent.com/shermand100/pinode-doge/main/downloadLatestDogecoin.sh | bash
 		
 		sleep 2
 		if [ $BOOT_STATUS -eq 2 ]
@@ -63,7 +63,7 @@ else
 ##Get DOGECOIN
 	echo "Download Dogecoin ARM package" >>debug.log
 	echo -e "\e[32mDownload Dogecoin ARM package...\e[0m"
-	wget -O - https://raw.githubusercontent.com/shermand100/pinode-doge/main/downloadLatestDoegcoin.sh | bash
+	wget -O - https://raw.githubusercontent.com/shermand100/pinode-doge/main/downloadLatestDogecoin.sh | bash
 		
 		if [ $BOOT_STATUS -eq 2 ]
 then
