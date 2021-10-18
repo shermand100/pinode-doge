@@ -46,7 +46,7 @@ fi
 	if [ $BOOT_STATUS -eq 3 ]
 then	
 		#Connection Status
-	PRINT_CN="$(dogecoin/bin/dogecoin-cli getnetworkinfo | jq -Mr {"This_Node_Running_Version:.subversion, Connected_Peer_Count:.connections, Available_Networks:.networks"} | tr -d '{}"')" && echo "$PRINT_CN" > /var/www/html/print_cn.txt
+	PRINT_CN="$(dogecoin/bin/dogecoin-cli getnetworkinfo | jq -Mr {"This_Node_Running_Version:.subversion, Connected_Peer_Count:.connections, Available_Networks:.networks"} | tr -d '{},[]"')" && echo "$PRINT_CN" > /var/www/html/print_cn.txt
 	date >> /var/www/html/print_cn.txt
 fi	
 
