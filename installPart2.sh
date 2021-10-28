@@ -1,8 +1,6 @@
 #!/bin/bash
 
-
-whiptail --title "PiNode-DOGE Continue Armbian Bullseye Installer" --msgbox "Your PiNode-DOGE is taking shape...\n\nThis next part should only take a couple of minutes\n\nSelect ok to continue setup" 16 60
-###Continue as 'pinodedoge'
+whiptail --title "PiNodeDOGE Continue Armbian Bullseye Installer" --msgbox "Your PiNode-DOGE is taking shape...\n\nThis next part should only take a couple of minutes\n\nSelect ok to continue setup" 16 60
 
 #Create debug file for handling install errors:
 touch debug.log
@@ -73,14 +71,7 @@ sudo systemctl enable statusOutputs.service 2> >(tee -a debug.log >&2)
 echo -e "\e[32mSuccess\e[0m"
 sleep 3
 
-##Add PiNode-DOGE php settings
-	echo "Add PiNode-DOGE php settings" >>debug.log
-echo -e "\e[32mAdd PiNode-DOGE php settings\e[0m"
-sleep 3
-sudo mv /home/pinodedoge/pinode-doge/etc/php/7.4/apache2/php.ini /etc/php/7.4/apache2/ 2> >(tee -a debug.log >&2)
-sudo chmod 644 /etc/systemd/system/*.service 2> >(tee -a debug.log >&2)
-sudo chown root /etc/systemd/system/*.service 2> >(tee -a debug.log >&2)
-#Configure apache server for access to monero log file
+#Configure apache server for access to dogecoin log file
 	sudo mv /home/pinodedoge/pinode-doge/etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf 2> >(tee -a debug.log >&2)
 sudo chmod 777 /etc/apache2/sites-enabled/000-default.conf 2> >(tee -a debug.log >&2)
 sudo chown root /etc/apache2/sites-enabled/000-default.conf 2> >(tee -a debug.log >&2)
