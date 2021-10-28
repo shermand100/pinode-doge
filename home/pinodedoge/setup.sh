@@ -57,7 +57,7 @@
 						;;
 				
 					"2)")	if (whiptail --title "Update PiNode-DOGE" --yesno "This will check for updates to PiNode-DOGE Including performance, features and web interface\n\nWould you like to continue?" 12 78); then
-							. /home/pinodedoge/setup-update-pinodedoge.sh
+							. /home/pinodedoge/setup-update-pinodedoge-local.sh
 							else
 							. /home/pinodedoge/setup.sh
 							fi
