@@ -11,6 +11,7 @@ PiNode-DOGE is a completely free and open source suite of tools to help a user r
 After setup, normal interaction is available through a built in web interface accessible from any device on your local network.
 
 ## One-line Install
+### Raspberry Pi OS
 Flash your storage media with Raspberry Pi OS (lite) in your normal way. SSH into your fresh Pi, then it's as simple as running the one line below.
 
 `wget -O - https://raw.githubusercontent.com/shermand100/pinode-doge/main/Install-PiNode-DOGE.sh | bash`
@@ -19,6 +20,15 @@ Once installed you can interact with your node via the Web-UI from another devic
 
 *Did you know the Raspberry models Pi3 and above support boot from USB? Thats right, not more need for slow MicroSD, flash your OS straight to USB storage for USB3 speeds!
 https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#usb-mass-storage-boot
+
+### Armbian Debian Bullseye
+Flash your storage media with [Armbian Debian Bullseye for your device](https://www.armbian.com/download/) (lite if available) in your normal way. SSH into your device as `root` with password `1234`. Create user `pinodedoge` but remain logged in as `root` Then run the one line below:
+
+`wget -O - https://raw.githubusercontent.com/shermand100/pinode-doge/main/Install-PiNode-DOGE.sh | bash`
+
+Once installed you can interact with your node via the Web-UI from another device on the same network at http://pinodedoge.local or http://device-ip-of-node
+
+For best performance consider booting your device from USB rather than MicroSD cards.
 
 ## Screenshots:
 ---
