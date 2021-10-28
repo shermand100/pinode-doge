@@ -1,6 +1,8 @@
 #!/bin/bash
 
-whiptail --title "PiNode-DOGE Continue Install" --msgbox "Your PiNode-DOGE is taking shape...\n\nThis next step should only take a few minutes\n\nSelect ok to continue setup" 16 60
+
+whiptail --title "PiNode-DOGE Continue Armbian Bullseye Installer" --msgbox "Your PiNode-DOGE is taking shape...\n\nThis next part should only take a couple of minutes\n\nSelect ok to continue setup" 16 60
+###Continue as 'pinodedoge'
 
 #Create debug file for handling install errors:
 touch debug.log
@@ -12,46 +14,31 @@ echo "
 ####################
 " >>debug.log
 
-###Continue as 'pinodedoge'
-cd
-echo -e "\e[32mLock old user 'pi'\e[0m"
-sleep 2
-sudo passwd --lock pi
-echo -e "\e[32mUser 'pi' Locked\e[0m"
-sleep 3
-
 ##Update and Upgrade system
-	echo "Update and Upgrade system" >>debug.log
-echo -e "\e[32mReceiving and applying OS updates to latest versions\e[0m"
+echo -e "\e[32mReceiving and applying Armbian updates to latest versions\e[0m"
 sleep 3
-sudo apt update 2> >(tee -a debug.log >&2) && sudo apt upgrade -y 2> >(tee -a debug.log >&2)
+sudo apt update 2> >(tee -a debug.log >&2) && sudo apt upgrade -y 2> >(tee -a debug.log >&2) && sudo apt install armbian-config -y 2> >(tee -a debug.log >&2)
 
 ##Installing dependencies for --- Web Interface
 	echo "Installing dependencies for --- Web Interface" >>debug.log
 echo -e "\e[32mInstalling dependencies for --- Web Interface\e[0m"
 sleep 3
-sudo apt install git apache2 shellinabox php7.4 php7.4-cli php7.4-common php7.4-curl php7.4-gd php7.4-json php7.4-mbstring php7.4-mysql php7.4-xml -y 2> >(tee -a debug.log >&2)
+sudo apt install apache2 shellinabox php7.4 php7.4-cli php7.4-common php7.4-curl php7.4-gd php7.4-json php7.4-mbstring php7.4-mysql php7.4-xml -y 2> >(tee -a debug.log >&2)
 sleep 3
 
-
-##Installing dependencies for --- miscellaneous (security tools-fail2ban-ufw, menu tool-dialog, screen, mariadb)
+##Checking all dependencies are installed for --- miscellaneous (security tools - fail2ban-ufw, menu tool-dialog, screen)
 	echo "Installing dependencies for --- miscellaneous" >>debug.log
-echo -e "\e[32mInstalling dependencies for --- Miscellaneous\e[0m"
+echo -e "\e[32mChecking all dependencies are installed for --- Miscellaneous\e[0m"
 sleep 3
-sudo apt install screen exfat-fuse exfat-utils fail2ban ufw dialog jq -y 2> >(tee -a debug.log >&2)
-
-sleep 3
+sudo apt install git screen exfat-fuse exfat-utils fail2ban ufw dialog ntfs-3g avahi-daemon -y 2> >(tee -a debug.log >&2)
 
 ##Clone PiNode-DOGE to device from git
 	echo "Clone PiNode-DOGE to device from git" >>debug.log
 echo -e "\e[32mDownloading PiNode-DOGE files\e[0m"
 sleep 3
-
 git clone -b Armbian-Debian --single-branch https://github.com/shermand100/pinode-doge.git 2> >(tee -a debug.log >&2)
 
-
-
-##Configure ssh security. Allow only user 'pinodedoge' & 'root' login disabled, restart config to make changes
+##Configure ssh security. Allows only user 'pinodedoge'. Also 'root' login disabled via ssh, restarts config to make changes
 	echo "Configure ssh security" >>debug.log
 echo -e "\e[32mConfiguring SSH security\e[0m"
 sleep 3
@@ -62,12 +49,6 @@ sudo /etc/init.d/ssh restart 2> >(tee -a debug.log >&2)
 echo -e "\e[32mSSH security config complete\e[0m"
 sleep 3
 
-##Disable IPv6 on boot. Enabled causes errors as Raspbian generates a IPv4 and IPv6 address and dogecoind will fail with both.
-echo -e "\e[32mDisable IPv6 on boot\e[0m"
-sleep 3
-sudo sed -i '1s/$/ ipv6.disable=1/' /boot/cmdline.txt
-echo -e "\e[32mIPv6 Disabled on boot\e[0m"
-sleep 3
 
 ##Enable PiNode-DOGE on boot
 	echo "Enable PiNode-DOGE on boot" >>debug.log
@@ -96,8 +77,11 @@ sleep 3
 	echo "Add PiNode-DOGE php settings" >>debug.log
 echo -e "\e[32mAdd PiNode-DOGE php settings\e[0m"
 sleep 3
-#Configure apache server for access to dogecoind log file
-sudo mv /home/pinodedoge/pinode-doge/etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf 2> >(tee -a debug.log >&2)
+sudo mv /home/pinodedoge/pinode-doge/etc/php/7.4/apache2/php.ini /etc/php/7.4/apache2/ 2> >(tee -a debug.log >&2)
+sudo chmod 644 /etc/systemd/system/*.service 2> >(tee -a debug.log >&2)
+sudo chown root /etc/systemd/system/*.service 2> >(tee -a debug.log >&2)
+#Configure apache server for access to monero log file
+	sudo mv /home/pinodedoge/pinode-doge/etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf 2> >(tee -a debug.log >&2)
 sudo chmod 777 /etc/apache2/sites-enabled/000-default.conf 2> >(tee -a debug.log >&2)
 sudo chown root /etc/apache2/sites-enabled/000-default.conf 2> >(tee -a debug.log >&2)
 sudo /etc/init.d/apache2 restart 2> >(tee -a debug.log >&2)
@@ -111,12 +95,11 @@ sudo mv /home/pinodedoge/pinode-doge/etc/avahi/avahi-daemon.conf /etc/avahi/avah
 sudo /etc/init.d/avahi-daemon restart 2> >(tee -a debug.log >&2)
 
 ##Copy PiNode-DOGE scripts to home folder
-	echo "Copy PiNode-DOGE scripts to home folder" >>debug.log
-echo -e "\e[32mMoving PiNode-DOGE scripts into possition\e[0m"
+echo -e "\e[32mMoving PiNode-DOGE scripts into position\e[0m"
 sleep 3
 mv /home/pinodedoge/pinode-doge/home/pinodedoge/* /home/pinodedoge/ 2> >(tee -a debug.log >&2)
 mv /home/pinodedoge/pinode-doge/home/pinodedoge/.profile /home/pinodedoge/ 2> >(tee -a debug.log >&2)
-sudo chmod 777 -R /home/pinodedoge/* 2> >(tee -a debug.log >&2)
+sudo chmod 777 -R /home/pinodedoge/*	2> >(tee -a debug.log >&2) #Read/write access needed by www-data to action php port, address customisation
 echo -e "\e[32mSuccess\e[0m"
 sleep 3
 
@@ -142,7 +125,6 @@ mv ~/dogecoin-1.14.4 ~/dogecoin
 #Delete obsolete package
 rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
 
-
 ##Install crontab
 		echo "Install crontab" >>debug.log
 echo -e "\e[32mSetup crontab\e[0m"
@@ -151,18 +133,15 @@ crontab /home/pinodedoge/pinode-doge/var/spool/cron/crontabs/pinodedoge 2> >(tee
 echo -e "\e[32mSuccess\e[0m"
 sleep 3
 
-##Set RAM Swappiness lower
+##Set Swappiness lower
 		echo "Set RAM Swappiness lower" >>debug.log
 sudo sysctl vm.swappiness=10 2> >(tee -a debug.log >&2)
-
 
 ## Remove left over files from git clone actions
 	echo "Remove left over files from git clone actions" >>debug.log
 echo -e "\e[32mCleanup leftover directories\e[0m"
 sleep 3
 sudo rm -r /home/pinodedoge/pinode-doge/ 2> >(tee -a debug.log >&2)
-#Delete obsolete dogecoin package
-rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
 
 ##Change log in menu to 'main'
 #Delete line 28 (previous setting)
@@ -178,12 +157,13 @@ echo "
 " >>debug.log
 
 ## Install complete
-echo -e "\e[32mAll Installs complete\e[0m"
-whiptail --title "PiNode-DOGE Installer Part 2" --msgbox "Your PiNode-DOGE is ready\n\nInstall complete. When you log in after the reboot use the menu to change your passwords and other features.\n\nEnjoy your Node\n\nSelect ok to reboot" 16 60
+whiptail --title "PiNode-DOGE Install Complete" --msgbox "Your PiNode-DOGE is ready\n\nInstall complete. When you log in after the reboot use the menu to change your passwords and other features.\n\nEnjoy your Dogecoin Full Node\n\nSelect ok to reboot" 16 60
+echo -e "\e[32m****************************************\e[0m"
 echo -e "\e[32m****************************************\e[0m"
 echo -e "\e[32m**********PiNode-DOGE rebooting**********\e[0m"
 echo -e "\e[32m**********Reminder:*********************\e[0m"
 echo -e "\e[32m**********User: 'pinodedoge'*************\e[0m"
+echo -e "\e[32m****************************************\e[0m"
 echo -e "\e[32m****************************************\e[0m"
 sleep 10
 sudo reboot
