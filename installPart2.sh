@@ -22,7 +22,7 @@ sleep 3
 
 ##Update and Upgrade system
 	echo "Update and Upgrade system" >>debug.log
-echo -e "\e[32mReceiving and applying Raspberry Pi OS updates to latest versions\e[0m"
+echo -e "\e[32mReceiving and applying OS updates to latest versions\e[0m"
 sleep 3
 sudo apt update 2> >(tee -a debug.log >&2) && sudo apt upgrade -y 2> >(tee -a debug.log >&2)
 
@@ -40,22 +40,6 @@ echo -e "\e[32mInstalling dependencies for --- Miscellaneous\e[0m"
 sleep 3
 sudo apt install screen exfat-fuse exfat-utils fail2ban ufw dialog jq -y 2> >(tee -a debug.log >&2)
 
-sleep 3
-
-##Configure Swap file
-	echo "Configure Swap file" >>debug.log
-echo -e "\e[32mConfiguring 2GB Swap file (required for Dogecoin sync)\e[0m"
-sleep 3
-
-wget https://raw.githubusercontent.com/shermand100/pinode-doge/Armbian-Debian/etc/dphys-swapfile 2> >(tee -a debug.log >&2)
-
-sudo mv /home/pinodedoge/dphys-swapfile /etc/dphys-swapfile 2> >(tee -a debug.log >&2)
-sudo chmod 664 /etc/dphys-swapfile 2> >(tee -a debug.log >&2)
-sudo chown root /etc/dphys-swapfile 2> >(tee -a debug.log >&2)
-sudo dphys-swapfile setup 2> >(tee -a debug.log >&2)
-sleep 5
-sudo dphys-swapfile swapon 2> >(tee -a debug.log >&2)
-echo -e "\e[32mSwap file of 2GB Configured and enabled\e[0m"
 sleep 3
 
 ##Clone PiNode-DOGE to device from git
