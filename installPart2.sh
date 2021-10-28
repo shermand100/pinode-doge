@@ -30,7 +30,7 @@ sudo apt update 2> >(tee -a debug.log >&2) && sudo apt upgrade -y 2> >(tee -a de
 	echo "Installing dependencies for --- Web Interface" >>debug.log
 echo -e "\e[32mInstalling dependencies for --- Web Interface\e[0m"
 sleep 3
-sudo apt install git apache2 shellinabox php7.3 php7.3-cli php7.3-common php7.3-curl php7.3-gd php7.3-json php7.3-mbstring php7.3-mysql php7.3-xml -y 2> >(tee -a debug.log >&2)
+sudo apt install git apache2 shellinabox php7.4 php7.4-cli php7.4-common php7.4-curl php7.4-gd php7.4-json php7.4-mbstring php7.4-mysql php7.4-xml -y 2> >(tee -a debug.log >&2)
 sleep 3
 
 
@@ -47,7 +47,7 @@ sleep 3
 echo -e "\e[32mConfiguring 2GB Swap file (required for Dogecoin sync)\e[0m"
 sleep 3
 
-wget https://raw.githubusercontent.com/shermand100/pinode-doge/Raspberry-Pi-OS/etc/dphys-swapfile 2> >(tee -a debug.log >&2)
+wget https://raw.githubusercontent.com/shermand100/pinode-doge/Armbian-Debian/etc/dphys-swapfile 2> >(tee -a debug.log >&2)
 
 sudo mv /home/pinodedoge/dphys-swapfile /etc/dphys-swapfile 2> >(tee -a debug.log >&2)
 sudo chmod 664 /etc/dphys-swapfile 2> >(tee -a debug.log >&2)
@@ -63,7 +63,7 @@ sleep 3
 echo -e "\e[32mDownloading PiNode-DOGE files\e[0m"
 sleep 3
 
-git clone -b Raspberry-Pi-OS --single-branch https://github.com/shermand100/pinode-doge.git 2> >(tee -a debug.log >&2)
+git clone -b Armbian-Debian --single-branch https://github.com/shermand100/pinode-doge.git 2> >(tee -a debug.log >&2)
 
 
 
@@ -182,7 +182,7 @@ rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
 
 ##Change log in menu to 'main'
 #Delete line 28 (previous setting)
-wget -O ~/.profile https://raw.githubusercontent.com/shermand100/pinode-doge/Raspberry-Pi-OS/home/pinodedoge/.profile 2> >(tee -a debug.log >&2)
+wget -O ~/.profile https://raw.githubusercontent.com/shermand100/pinode-doge/Armbian-Debian/home/pinodedoge/.profile 2> >(tee -a debug.log >&2)
 
 ##End debug log
 echo "
@@ -200,7 +200,6 @@ echo -e "\e[32m****************************************\e[0m"
 echo -e "\e[32m**********PiNode-DOGE rebooting**********\e[0m"
 echo -e "\e[32m**********Reminder:*********************\e[0m"
 echo -e "\e[32m**********User: 'pinodedoge'*************\e[0m"
-echo -e "\e[32m**********Password: 'PiNodeDOGE'*********\e[0m"
 echo -e "\e[32m****************************************\e[0m"
 sleep 10
 sudo reboot
