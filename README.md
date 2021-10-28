@@ -10,6 +10,10 @@ PiNode-DOGE is a completely free and open source suite of tools to help a user r
 
 After setup, normal interaction is available through a built in web interface accessible from any device on your local network.
 
+## Hardware
+
+[See this project wiki page for info on supported hardware](https://github.com/shermand100/pinode-doge/wiki/Hardware)
+
 ## One-line Install
 ### Raspberry Pi OS
 Flash your storage media with Raspberry Pi OS (lite) in your normal way. SSH into your fresh Pi, then it's as simple as running the one line below.
