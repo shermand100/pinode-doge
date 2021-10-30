@@ -159,6 +159,11 @@ mv ~/dogecoin-1.14.4 ~/dogecoin
 rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
 
 
+##Create .dogecoin and debug.log to set read permission for www-data user
+mkdir .dogecoin
+touch /.dogecoin/debug.log
+sudo chmod 755 /home/pinodedoge/.dogecoin/debug.log
+
 ##Install crontab
 		echo "Install crontab" >>debug.log
 echo -e "\e[32mSetup crontab\e[0m"
