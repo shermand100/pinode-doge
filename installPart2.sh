@@ -108,13 +108,13 @@ sudo chmod 777 -R /var/www/html/ 2> >(tee -a debug.log >&2)
 ##Get DOGECOIN
 	echo "Download Dogecoin ARM package" >>debug.log
 #Download
-wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.4/dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
+wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.4/dogecoin-1.14.4-aarch64-linux-gnu.tar.gz
 #Unpack
-tar -zxvf dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
+tar -zxvf dogecoin-1.14.4-aarch64-linux-gnu.tar.gz
 #For consistancy between versions, rename directory
 mv ~/dogecoin-1.14.4 ~/dogecoin
 #Delete obsolete package
-rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
+rm dogecoin-1.14.4-aarch64-linux-gnu.tar.gz
 
 ##Install crontab
 		echo "Install crontab" >>debug.log
