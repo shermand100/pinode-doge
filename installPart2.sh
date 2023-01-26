@@ -21,7 +21,7 @@ sudo apt update 2> >(tee -a debug.log >&2) && sudo apt upgrade -y 2> >(tee -a de
 	echo "Installing dependencies for --- Web Interface" >>debug.log
 echo -e "\e[32mInstalling dependencies for --- Web Interface\e[0m"
 sleep 3
-sudo apt install apache2 shellinabox php php-common-y 2> >(tee -a debug.log >&2)
+sudo apt install apache2 shellinabox php php-common -y 2> >(tee -a debug.log >&2)
 sleep 3
 
 ##Checking all dependencies are installed for --- miscellaneous (security tools - fail2ban-ufw, menu tool-dialog, screen)
