@@ -18,7 +18,7 @@ case $CHOICE in
 		echo -e "\e[32mDownloading data for install\e[0m"
 		sleep 3
 		wget https://raw.githubusercontent.com/shermand100/pinode-doge/Raspberry-Pi-OS/installPart1.sh
-		echo -e "\e[32mPiNode-DOGE RaspbianRaspberry Pi OS configuration file received\e[0m"
+		echo -e "\e[32mPiNode-DOGE Raspbian Raspberry Pi OS configuration file received\e[0m"
 		echo -e "\e[32mStarting Installation\e[0m"
 		sudo chmod 755 /home/pi/installPart1.sh
 		sleep 2
