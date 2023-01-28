@@ -27,7 +27,7 @@ case $CHOICE in
 		;;
 
 	"2)")   
-		#Commands for Armbian Bullseye (latest)
+		#Commands for Armbian Jammy (latest)
 		echo -e "\e[32mDownloading data for install\e[0m"
 		sleep 3
 		wget https://raw.githubusercontent.com/shermand100/pinode-doge/Armbian-Debian/installPart1.sh
