@@ -117,8 +117,8 @@ mv ~/dogecoin-1.14.4 ~/dogecoin
 rm dogecoin-1.14.4-aarch64-linux-gnu.tar.gz
 
 ##Create .dogecoin and debug.log to set read permission for www-data user
-mkdir .dogecoin
-touch /.dogecoin/debug.log
+mkdir /home/pinodedoge/.dogecoin
+touch /home/pinodedoge/.dogecoin/debug.log
 sudo chmod 755 /home/pinodedoge/.dogecoin/debug.log
 
 ##Install crontab
