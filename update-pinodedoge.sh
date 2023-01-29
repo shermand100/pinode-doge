@@ -28,7 +28,7 @@ sleep 3
 	echo "Installing dependencies for --- miscellaneous" >>debug.log
 echo -e "\e[32mChecking all dependencies are installed for --- Miscellaneous\e[0m"
 sleep 3
-sudo apt install git screen exfat-fuse exfat-utils fail2ban ufw dialog ntfs-3g avahi-daemon -y 2> >(tee -a debug.log >&2)
+sudo apt install git screen exfat-fuse fail2ban ufw dialog ntfs-3g avahi-daemon -y 2> >(tee -a debug.log >&2)
 
 ##Clone PiNode-DOGE to device from git
 	echo "Clone PiNode-DOGE to device from git" >>debug.log
