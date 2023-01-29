@@ -150,7 +150,7 @@ sudo chmod 777 -R /var/www/html/ 2> >(tee -a debug.log >&2)
 ARCH=$(uname -m)
 
 if [ "$ARCH" = "armv7l" ]; then
-  echo "This is an ARMv7 architecture."
+  echo -e "\e[32mThis is ARMv7 architecture.\e[0m"
   ##Get DOGECOIN
 	echo "Download Dogecoin ARM package" >>debug.log
 #Download
@@ -162,7 +162,7 @@ mv ~/dogecoin-1.14.6 ~/dogecoin
 #Delete obsolete package
 rm dogecoin-1.14.6-arm-linux-gnueabihf.tar.gz
 else
-  echo "This is an aarch64 architecture."
+  echo -e "\e[32mThis is aarch64 architecture.\e[0m"
   ##Get DOGECOIN
 	echo "Download Dogecoin aarch64 package" >>debug.log
 #Download
@@ -177,8 +177,8 @@ fi
 sleep 3
 
 ##Create .dogecoin and debug.log to set read permission for www-data user
-mkdir .dogecoin
-touch /.dogecoin/debug.log
+mkdir /home/pinodedoge/.dogecoin
+touch /home/pinodedoge/.dogecoin/debug.log
 sudo chmod 755 /home/pinodedoge/.dogecoin/debug.log
 
 ##Install crontab
