@@ -224,11 +224,16 @@ echo "
 ## Install complete
 echo -e "\e[32mAll Installs complete\e[0m"
 whiptail --title "PiNode-DOGE Installer Part 2" --msgbox "Your PiNode-DOGE is ready\n\nInstall complete. When you log in after the reboot use the menu to change your passwords and other features.\n\nEnjoy your Node\n\nSelect ok to reboot" 16 60
-echo -e "\e[32m****************************************\e[0m"
+echo -e "\e[32m*****************************************\e[0m"
 echo -e "\e[32m**********PiNode-DOGE rebooting**********\e[0m"
-echo -e "\e[32m**********Reminder:*********************\e[0m"
+echo -e "\e[32m**********Reminder:**********************\e[0m"
 echo -e "\e[32m**********User: 'pinodedoge'*************\e[0m"
 echo -e "\e[32m**********Password: 'PiNodeDOGE'*********\e[0m"
-echo -e "\e[32m****************************************\e[0m"
+echo -e "\e[32m*****************************************\e[0m"
+echo -e "\e[32m***********Will also reboot**************\e[0m"
+echo -e "\e[32m***********again after login*************\e[0m"
+echo -e "\e[32m*****************************************\e[0m"
+echo -e "\e[32m*****************************************\e[0m"
+
 sleep 10
 sudo reboot
