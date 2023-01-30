@@ -128,7 +128,7 @@ sudo /etc/init.d/avahi-daemon restart 2> >(tee -a debug.log >&2)
 
 ##Copy PiNode-DOGE scripts to home folder
 	echo "Copy PiNode-DOGE scripts to home folder" >>debug.log
-echo -e "\e[32mMoving PiNode-DOGE scripts into possition\e[0m"
+echo -e "\e[32mMoving PiNode-DOGE scripts into position\e[0m"
 sleep 3
 mv /home/pinodedoge/pinode-doge/home/pinodedoge/* /home/pinodedoge/ 2> >(tee -a debug.log >&2)
 mv /home/pinodedoge/pinode-doge/home/pinodedoge/.profile /home/pinodedoge/ 2> >(tee -a debug.log >&2)
