@@ -112,6 +112,7 @@ wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.6/dogecoin-1.1
 #Unpack
 tar -zxvf dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
 #For consistancy between versions, rename directory
+rm -rf ~/dogecoin
 mv ~/dogecoin-1.14.6 ~/dogecoin
 #Delete obsolete package
 rm dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
