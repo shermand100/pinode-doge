@@ -161,7 +161,7 @@ echo -e "\e[32m**********Reminder:*********************\e[0m"
 echo -e "\e[32m**********User: 'pinodedoge'************\e[0m"
 echo -e "\e[32m****************************************\e[0m"
 echo -e "\e[32m*****Will also reboot a second time*****\e[0m"
-echo -e "\e[32m************Automatically***************\e[0m"
+echo -e "\e[32m*************after login****************\e[0m"
 echo -e "\e[32m****************************************\e[0m"
 sleep 10
 sudo reboot
