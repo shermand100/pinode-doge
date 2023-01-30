@@ -16,7 +16,7 @@ After setup, normal interaction is available through a built in web interface ac
 
 ## One-line Install
 ### Raspberry Pi OS (Raspian)
-Flash your storage media with Raspberry Pi OS (lite) in your normal way. SSH into your fresh Pi, then it's as simple as running the one line below.
+Flash your storage media with Raspberry Pi OS (lite) 32 or 64 Bit in your normal way. SSH into your fresh Pi, then it's as simple as running the one line below.
 
 `wget -O - https://raw.githubusercontent.com/shermand100/pinode-doge/main/Install-PiNode-DOGE.sh | bash`
 
