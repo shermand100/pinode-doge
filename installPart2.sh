@@ -1,6 +1,6 @@
 #!/bin/bash
 
-whiptail --title "PiNodeDOGE Continue Armbian Bullseye Installer" --msgbox "Your PiNode-DOGE is taking shape...\n\nThis next part should only take a couple of minutes\n\nSelect ok to continue setup" 16 60
+whiptail --title "PiNodeDOGE Continue Armbian Ubuntu Jammy Installer" --msgbox "Your PiNode-DOGE is taking shape...\n\nThis next part should only take a couple of minutes\n\nSelect ok to continue setup" 16 60
 
 #Create debug file for handling install errors:
 touch debug.log
@@ -28,7 +28,7 @@ sleep 3
 	echo "Installing dependencies for --- miscellaneous" >>debug.log
 echo -e "\e[32mChecking all dependencies are installed for --- Miscellaneous\e[0m"
 sleep 3
-sudo apt install git screen exfat-fuse exfat-utils fail2ban ufw dialog ntfs-3g avahi-daemon -y 2> >(tee -a debug.log >&2)
+sudo apt install git screen exfat-fuse fail2ban ufw dialog ntfs-3g avahi-daemon -y 2> >(tee -a debug.log >&2)
 
 ##Clone PiNode-DOGE to device from git
 	echo "Clone PiNode-DOGE to device from git" >>debug.log
@@ -108,17 +108,17 @@ sudo chmod 777 -R /var/www/html/ 2> >(tee -a debug.log >&2)
 ##Get DOGECOIN
 	echo "Download Dogecoin ARM package" >>debug.log
 #Download
-wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.4/dogecoin-1.14.4-aarch64-linux-gnu.tar.gz
+wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.6/dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
 #Unpack
-tar -zxvf dogecoin-1.14.4-aarch64-linux-gnu.tar.gz
+tar -zxvf dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
 #For consistancy between versions, rename directory
-mv ~/dogecoin-1.14.4 ~/dogecoin
+mv ~/dogecoin-1.14.6 ~/dogecoin
 #Delete obsolete package
-rm dogecoin-1.14.4-aarch64-linux-gnu.tar.gz
+rm dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
 
 ##Create .dogecoin and debug.log to set read permission for www-data user
-mkdir .dogecoin
-touch /.dogecoin/debug.log
+mkdir /home/pinodedoge/.dogecoin
+touch /home/pinodedoge/.dogecoin/debug.log
 sudo chmod 755 /home/pinodedoge/.dogecoin/debug.log
 
 ##Install crontab
@@ -156,10 +156,12 @@ echo "
 whiptail --title "PiNode-DOGE Install Complete" --msgbox "Your PiNode-DOGE is ready\n\nInstall complete. When you log in after the reboot use the menu to change your passwords and other features.\n\nEnjoy your Dogecoin Full Node\n\nSelect ok to reboot" 16 60
 echo -e "\e[32m****************************************\e[0m"
 echo -e "\e[32m****************************************\e[0m"
-echo -e "\e[32m**********PiNode-DOGE rebooting**********\e[0m"
+echo -e "\e[32m**********PiNode-DOGE rebooting*********\e[0m"
 echo -e "\e[32m**********Reminder:*********************\e[0m"
-echo -e "\e[32m**********User: 'pinodedoge'*************\e[0m"
+echo -e "\e[32m**********User: 'pinodedoge'************\e[0m"
 echo -e "\e[32m****************************************\e[0m"
+echo -e "\e[32m*****Will also reboot a second time*****\e[0m"
+echo -e "\e[32m*************after login****************\e[0m"
 echo -e "\e[32m****************************************\e[0m"
 sleep 10
 sudo reboot

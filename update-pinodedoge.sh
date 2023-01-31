@@ -21,14 +21,14 @@ sudo apt update 2> >(tee -a debug.log >&2) && sudo apt upgrade -y 2> >(tee -a de
 	echo "Installing dependencies for --- Web Interface" >>debug.log
 echo -e "\e[32mInstalling dependencies for --- Web Interface\e[0m"
 sleep 3
-sudo apt install apache2 shellinabox php7.4 php7.4-cli php7.4-common php7.4-curl php7.4-gd php7.4-json php7.4-mbstring php7.4-mysql php7.4-xml -y 2> >(tee -a debug.log >&2)
+sudo apt install apache2 shellinabox php php-common -y 2> >(tee -a debug.log >&2)
 sleep 3
 
 ##Checking all dependencies are installed for --- miscellaneous (security tools - fail2ban-ufw, menu tool-dialog, screen)
 	echo "Installing dependencies for --- miscellaneous" >>debug.log
 echo -e "\e[32mChecking all dependencies are installed for --- Miscellaneous\e[0m"
 sleep 3
-sudo apt install git screen exfat-fuse exfat-utils fail2ban ufw dialog ntfs-3g avahi-daemon -y 2> >(tee -a debug.log >&2)
+sudo apt install git screen exfat-fuse fail2ban ufw dialog ntfs-3g avahi-daemon -y 2> >(tee -a debug.log >&2)
 
 ##Clone PiNode-DOGE to device from git
 	echo "Clone PiNode-DOGE to device from git" >>debug.log
@@ -108,13 +108,14 @@ sudo chmod 777 -R /var/www/html/ 2> >(tee -a debug.log >&2)
 ##Get DOGECOIN
 	echo "Download Dogecoin ARM package" >>debug.log
 #Download
-wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.4/dogecoin-1.14.4-aarch64-linux-gnu.tar.gz
+wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.6/dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
 #Unpack
-tar -zxvf dogecoin-1.14.4-aarch64-linux-gnu.tar.gz
+tar -zxvf dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
 #For consistancy between versions, rename directory
-mv ~/dogecoin-1.14.4 ~/dogecoin
+rm -rf ~/dogecoin
+mv ~/dogecoin-1.14.6 ~/dogecoin
 #Delete obsolete package
-rm dogecoin-1.14.4-aarch64-linux-gnu.tar.gz
+rm dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
 
 ##Install crontab
 		echo "Install crontab" >>debug.log
