@@ -128,7 +128,7 @@ sudo /etc/init.d/avahi-daemon restart 2> >(tee -a debug.log >&2)
 
 ##Copy PiNode-DOGE scripts to home folder
 	echo "Copy PiNode-DOGE scripts to home folder" >>debug.log
-echo -e "\e[32mMoving PiNode-DOGE scripts into possition\e[0m"
+echo -e "\e[32mMoving PiNode-DOGE scripts into position\e[0m"
 sleep 3
 mv /home/pinodedoge/pinode-doge/home/pinodedoge/* /home/pinodedoge/ 2> >(tee -a debug.log >&2)
 mv /home/pinodedoge/pinode-doge/home/pinodedoge/.profile /home/pinodedoge/ 2> >(tee -a debug.log >&2)
@@ -147,21 +147,38 @@ sudo mv /home/pinodedoge/pinode-doge/HTML/images /var/www/html 2> >(tee -a debug
 sudo chown www-data -R /var/www/html/ 2> >(tee -a debug.log >&2)
 sudo chmod 777 -R /var/www/html/ 2> >(tee -a debug.log >&2)
 
-##Get DOGECOIN
+ARCH=$(uname -m)
+
+if [ "$ARCH" = "armv7l" ]; then
+  echo -e "\e[32mThis is ARMv7 architecture.\e[0m"
+  ##Get DOGECOIN
 	echo "Download Dogecoin ARM package" >>debug.log
 #Download
-wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.4/dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
+wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.6/dogecoin-1.14.6-arm-linux-gnueabihf.tar.gz
 #Unpack
-tar -zxvf dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
+tar -zxvf dogecoin-1.14.6-arm-linux-gnueabihf.tar.gz
 #For consistancy between versions, rename directory
-mv ~/dogecoin-1.14.4 ~/dogecoin
+mv ~/dogecoin-1.14.6 ~/dogecoin
 #Delete obsolete package
-rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
-
+rm dogecoin-1.14.6-arm-linux-gnueabihf.tar.gz
+else
+  echo -e "\e[32mThis is aarch64 architecture.\e[0m"
+  ##Get DOGECOIN
+	echo "Download Dogecoin aarch64 package" >>debug.log
+#Download
+wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.6/dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
+#Unpack
+tar -zxvf dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
+#For consistancy between versions, rename directory
+mv ~/dogecoin-1.14.6 ~/dogecoin
+#Delete obsolete package
+rm dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
+fi
+sleep 3
 
 ##Create .dogecoin and debug.log to set read permission for www-data user
-mkdir .dogecoin
-touch /.dogecoin/debug.log
+mkdir /home/pinodedoge/.dogecoin
+touch /home/pinodedoge/.dogecoin/debug.log
 sudo chmod 755 /home/pinodedoge/.dogecoin/debug.log
 
 ##Install crontab
@@ -183,7 +200,13 @@ echo -e "\e[32mCleanup leftover directories\e[0m"
 sleep 3
 sudo rm -r /home/pinodedoge/pinode-doge/ 2> >(tee -a debug.log >&2)
 #Delete obsolete dogecoin package
-rm dogecoin-1.14.4-arm-linux-gnueabihf.tar.gz
+if [ "$ARCH" = "armv7l" ]; then
+rm dogecoin-1.14.6-arm-linux-gnueabihf.tar.gz
+else
+rm dogecoin-1.14.6-aarch64-linux-gnu.tar.gz
+fi
+sleep 3
+
 
 ##Change log in menu to 'main'
 #Delete line 28 (previous setting)
@@ -201,11 +224,16 @@ echo "
 ## Install complete
 echo -e "\e[32mAll Installs complete\e[0m"
 whiptail --title "PiNode-DOGE Installer Part 2" --msgbox "Your PiNode-DOGE is ready\n\nInstall complete. When you log in after the reboot use the menu to change your passwords and other features.\n\nEnjoy your Node\n\nSelect ok to reboot" 16 60
-echo -e "\e[32m****************************************\e[0m"
+echo -e "\e[32m*****************************************\e[0m"
 echo -e "\e[32m**********PiNode-DOGE rebooting**********\e[0m"
-echo -e "\e[32m**********Reminder:*********************\e[0m"
+echo -e "\e[32m**********Reminder:**********************\e[0m"
 echo -e "\e[32m**********User: 'pinodedoge'*************\e[0m"
 echo -e "\e[32m**********Password: 'PiNodeDOGE'*********\e[0m"
-echo -e "\e[32m****************************************\e[0m"
+echo -e "\e[32m*****************************************\e[0m"
+echo -e "\e[32m***********Will also reboot**************\e[0m"
+echo -e "\e[32m***********again after login*************\e[0m"
+echo -e "\e[32m*****************************************\e[0m"
+echo -e "\e[32m*****************************************\e[0m"
+
 sleep 10
 sudo reboot

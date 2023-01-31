@@ -19,7 +19,7 @@ sudo apt update 2> >(tee -a debug.log >&2) && sudo apt upgrade -y 2> >(tee -a de
 	echo "Update dependencies for Web interface" >>debug.log
 echo -e "\e[32m##Checking all dependencies are installed for --- Web Interface\e[0m"
 sleep 3
-sudo apt install git apache2 shellinabox php7.3 php7.3-cli php7.3-common php7.3-curl php7.3-gd php7.3-json php7.3-mbstring php7.3-mysql php7.3-xml -y 2> >(tee -a debug.log >&2)
+sudo apt install git apache2 shellinabox php php-common -y 2> >(tee -a debug.log >&2)
 echo -e "\e[32mSuccess\e[0m"
 sleep 3
 
