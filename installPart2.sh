@@ -108,13 +108,13 @@ sudo chmod 777 -R /var/www/html/ 2> >(tee -a debug.log >&2)
 ##Get DOGECOIN
 	echo "Download Dogecoin ARM package" >>debug.log
 #Download
-wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.7/dogecoin-1.14.7-aarch64-linux-gnu.tar.gz
+wget https://github.com/dogecoin/dogecoin/releases/download/v1.14.8/dogecoin-1.14.8-aarch64-linux-gnu.tar.gz
 #Unpack
-tar -zxvf dogecoin-1.14.7-aarch64-linux-gnu.tar.gz
+tar -zxvf dogecoin-1.14.8-aarch64-linux-gnu.tar.gz
 #For consistancy between versions, rename directory
-mv ~/dogecoin-1.14.7 ~/dogecoin
+mv ~/dogecoin-1.14.8 ~/dogecoin
 #Delete obsolete package
-rm dogecoin-1.14.7-aarch64-linux-gnu.tar.gz
+rm dogecoin-1.14.8-aarch64-linux-gnu.tar.gz
 
 ##Create .dogecoin and debug.log to set read permission for www-data user
 mkdir /home/pinodedoge/.dogecoin
